@@ -9,7 +9,7 @@
 
         private int RunRandomCarIssue = 0;
 
-        public static string winner = "";
+        private static string winner = "";
 
         public Car(string name)
         {
@@ -29,15 +29,13 @@
                 {
                     RandomCarIssues();
                 }
-
                 RunRandomCarIssue++;
             }
 
             if (Distance >= 10)
             {
                 Console.WriteLine($"{Name} crossed the finish line!");
-                string currentWinner = Name;
-                Interlocked.CompareExchange(ref winner, currentWinner, "");
+                Interlocked.CompareExchange(ref winner, Name, "");
 
                 if(Name == winner)
                 {
